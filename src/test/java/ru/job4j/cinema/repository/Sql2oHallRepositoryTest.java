@@ -1,7 +1,5 @@
 package ru.job4j.cinema.repository;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -18,7 +16,7 @@ class Sql2oHallRepositoryTest {
     @BeforeAll
     public static void initRepositories() throws Exception {
         var properties = new Properties();
-        try (var inputStream = Sql2oHallRepository.class.getClassLoader()
+        try (var inputStream = Sql2oHallRepositoryTest.class.getClassLoader()
                 .getResourceAsStream("connection.properties")) {
             properties.load(inputStream);
         }
@@ -53,5 +51,4 @@ class Sql2oHallRepositoryTest {
         var allHalls = sql2oHallRepository.getAllHalls();
         assertThat(allHalls).contains(hall);
     }
-
 }

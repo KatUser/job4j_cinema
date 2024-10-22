@@ -21,9 +21,7 @@ class Sql2oFilmSessionRepositoryTest {
     @BeforeAll
     public static void initRepositories() throws Exception {
         var properties = new Properties();
-        try (var inputStream = Sql2oFilmSessionRepository
-                .class
-                .getClassLoader()
+        try (var inputStream = Sql2oFilmSessionRepositoryTest.class.getClassLoader()
                 .getResourceAsStream("connection.properties")) {
             properties.load(inputStream);
         }

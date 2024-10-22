@@ -18,8 +18,7 @@ class Sql2oTicketRepositoryTest {
     @BeforeAll
     public static void initRepositories() throws Exception {
         var properties = new Properties();
-        try (var inputStream = Sql2oTicketRepository
-                .class.getClassLoader()
+        try (var inputStream = Sql2oTicketRepositoryTest.class.getClassLoader()
                 .getResourceAsStream("connection.properties")) {
             properties.load(inputStream);
         }
