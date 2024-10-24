@@ -3,12 +3,10 @@ package ru.job4j.cinema.repository;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
 import ru.job4j.cinema.configuration.DatasourceConfiguration;
-import ru.job4j.cinema.model.Film;
 import ru.job4j.cinema.model.FilmSession;
 
 import java.time.LocalDateTime;
@@ -44,23 +42,6 @@ class Sql2oFilmSessionRepositoryTest {
         filmSessions.forEach(filmSession ->
                 sql2oFilmSessionRepository.deleteById(filmSession.getId()));
     }
-
-//    @Deprecated
-//    @Test
-//    public void whenSaveFilmSessionAndDeleteItThenGetTrue() {
-//        FilmSession filmSession = sql2oFilmSessionRepository.save(
-//                new FilmSession(
-//                        1,
-//                        1,
-//                        1,
-//                        LocalDateTime.now(),
-//                        LocalDateTime.now(),
-//                        1500)
-//        );
-//
-//        assertThat(sql2oFilmSessionRepository.deleteById(filmSession.getId())).isTrue();
-//
-//    }
 
     @Test
     public void whenSaveFilmSessionThenGetIt() {
