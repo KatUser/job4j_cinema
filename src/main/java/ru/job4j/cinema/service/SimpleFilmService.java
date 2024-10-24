@@ -64,6 +64,6 @@ public class SimpleFilmService implements FilmService {
     @Override
     public Collection<Film> findAll() {
 
-        return filmRepository.findAll();
+        return filmRepository.findAllFilms();
     }
 }

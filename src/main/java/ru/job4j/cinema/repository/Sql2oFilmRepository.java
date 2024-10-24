@@ -120,21 +120,23 @@ public class Sql2oFilmRepository implements FilmRepository {
                     .executeAndFetchFirst(FilmDto.class);
         }
     }
+/*2 разных метода зачем?????? */
+//
+//    public Collection<Film> findAll() {
+//        try (var connection = sql2o.open()) {
+//
+//            var query = connection.createQuery("""
+//                    SELECT *
+//                    FROM films
+//                    """);
+//
+//            return query.setColumnMappings(Film.COLUMN_MAPPING)
+//                    .executeAndFetch(Film.class);
+//        }
+//    }
+
 
     @Override
-    public Collection<Film> findAll() {
-        try (var connection = sql2o.open()) {
-
-            var query = connection.createQuery("""
-                    SELECT *
-                    FROM films
-                    """);
-
-            return query.setColumnMappings(Film.COLUMN_MAPPING)
-                    .executeAndFetch(Film.class);
-        }
-    }
-
     public Collection<Film> findAllFilms() {
         try (var connection = sql2o.open()) {
 

@@ -15,5 +15,5 @@ public interface FilmRepository {
 
     FilmDto findByName(String name);
 
-    Collection<Film> findAll();
+    Collection<Film> findAllFilms();
 }
