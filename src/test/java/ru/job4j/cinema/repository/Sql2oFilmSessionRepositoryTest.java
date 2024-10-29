@@ -3,6 +3,7 @@ package ru.job4j.cinema.repository;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
@@ -43,8 +44,9 @@ class Sql2oFilmSessionRepositoryTest {
                 sql2oFilmSessionRepository.deleteById(filmSession.getId()));
     }
 
+    @DisplayName("Получаем сессию по id")
     @Test
-    public void whenSaveFilmSessionThenGetIt() {
+    public void whenSaveFilmSessionThenGetItById() {
         var filmSession = sql2oFilmSessionRepository.save(
                 new FilmSession(
                         0,
@@ -57,5 +59,39 @@ class Sql2oFilmSessionRepositoryTest {
         assertThat(sql2oFilmSessionRepository.getFilmSessionById(filmSession.getId()))
                 .isNotNull();
     }
+
+
+    @DisplayName("Получение несуществующей сессии")
+    @Test
+    public void whenGettingNonExistingSessionIdThenReceiveNull() {
+        assertThat(sql2oFilmSessionRepository.getFilmSessionById(1000))
+                .isNull();
+    }
+
+    @DisplayName("Получаем список сессий")
+    @Test
+    public void whenGettingListOfSessionsThenReceiveIt() {
+        sql2oFilmSessionRepository.save(
+                new FilmSession(
+                        0,
+                        1,
+                        1,
+                        LocalDateTime.now(),
+                        LocalDateTime.now(),
+                        1500)
+        );
+        sql2oFilmSessionRepository.save(
+                new FilmSession(
+                        0,
+                        1,
+                        1,
+                        LocalDateTime.now(),
+                        LocalDateTime.now(),
+                        1500)
+        );
+        assertThat(sql2oFilmSessionRepository.getAllFilmSessions()).isNotEmpty();
+        assertThat(sql2oFilmSessionRepository.getAllFilmSessions()).hasSize(2);
+    }
+
 }
 

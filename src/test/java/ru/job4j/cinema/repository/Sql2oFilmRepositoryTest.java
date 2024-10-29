@@ -5,6 +5,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.job4j.cinema.configuration.DatasourceConfiguration;
 import ru.job4j.cinema.model.Film;
@@ -39,6 +40,7 @@ class Sql2oFilmRepositoryTest {
         films.forEach(film -> sql2oFilmRepository.deleteById(film.getId()));
     }
 
+    @DisplayName("Получаем сохраненный фильм")
     @Test
     public void whenSaveThenGetSavedFilm() {
         var film = sql2oFilmRepository.save(
@@ -57,6 +59,7 @@ class Sql2oFilmRepositoryTest {
         assertThat(savedFilms).contains(film);
     }
 
+    @DisplayName("")
     @Test
     public void whenSaveNothingThenNothingIsFound() {
         assertThat(sql2oFilmRepository.findAllFilms()).isEmpty();
@@ -112,5 +115,31 @@ class Sql2oFilmRepositoryTest {
 
         var savedFilm = sql2oFilmRepository.findByName(film.getName());
         assertThat(film.getName()).isEqualTo(savedFilm.getName());
+    }
+
+    @Test
+    public void whenSaveFilmsThenGetAllOfThen() {
+        sql2oFilmRepository.save(
+                new Film(0,
+                        "TestFilm",
+                        "description",
+                        2000,
+                        1,
+                        1,
+                        1,
+                        1)
+        );
+        sql2oFilmRepository.save(
+                new Film(0,
+                        "TestFilm2",
+                        "description2",
+                        2000,
+                        1,
+                        1,
+                        1,
+                        1)
+        );
+
+        assertThat(sql2oFilmRepository.findAllFilms()).hasSize(2);
     }
 }

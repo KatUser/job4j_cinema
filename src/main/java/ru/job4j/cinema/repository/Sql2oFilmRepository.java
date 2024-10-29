@@ -28,7 +28,8 @@ public class Sql2oFilmRepository implements FilmRepository {
                     minimal_age,
                     duration_in_minutes,
                     file_id)
-                    values(:name,
+                    values
+                    (:name,
                     :description,
                     :year,
                     :genreId,

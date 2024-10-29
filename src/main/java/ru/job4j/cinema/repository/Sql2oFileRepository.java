@@ -19,6 +19,5 @@ public class Sql2oFileRepository implements FileRepository {
 
     @Override
     public void deleteById(int id) {
-
     }
 }
