@@ -47,10 +47,12 @@ public class FilmSessionController {
                                          @PathVariable int id,
                                          HttpServletRequest request) {
 
-        var foundFilmSession = filmSessionService.findFilmSessionById(id);
-        var foundFilm = filmService.findByName(foundFilmSession.getName());
         var ticket = new Ticket();
+
+        var foundFilmSession = filmSessionService.findFilmSessionById(id);
+        var foundFilm = filmService.findById(foundFilmSession.getFilmId());
         var hall = hallService.getHallBySessionId(id);
+
         ticket.setSessionId(id);
 
         model.addAttribute("filmsessiondto", foundFilmSession);

@@ -13,8 +13,8 @@ public interface FilmService {
     void deleteById(int id);
 
     FilmDto findById(int id);
-
-    FilmDto findByName(String name);
+//
+//    FilmDto findByName(String name);
 
     Collection<Film> findAll();
 }

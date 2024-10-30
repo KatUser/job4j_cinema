@@ -96,31 +96,31 @@ public class Sql2oFilmRepository implements FilmRepository {
         }
     }
 
-    @Override
-    public FilmDto findByName(String name) {
-        try (var connection = sql2o.open()) {
-
-            var query = connection.createQuery(
-                    """
-                    SELECT
-                    f.id,
-                    f.name,
-                    f.description,
-                    f."year",
-                    g.name as genre,
-                    f.minimal_age,
-                    f.duration_in_minutes,
-                    f.file_id FROM films AS f
-                    INNER JOIN genres AS g ON genre_id = g.id
-                    WHERE f.name = :name
-                    """);
-
-            query.addParameter("name", name);
-
-            return query.setColumnMappings(FilmDto.COLUMN_MAPPING)
-                    .executeAndFetchFirst(FilmDto.class);
-        }
-    }
+//    @Override
+//    public FilmDto findByName(String name) {
+//        try (var connection = sql2o.open()) {
+//
+//            var query = connection.createQuery(
+//                    """
+//                    SELECT
+//                    f.id,
+//                    f.name,
+//                    f.description,
+//                    f."year",
+//                    g.name as genre,
+//                    f.minimal_age,
+//                    f.duration_in_minutes,
+//                    f.file_id FROM films AS f
+//                    INNER JOIN genres AS g ON genre_id = g.id
+//                    WHERE f.name = :name
+//                    """);
+//
+//            query.addParameter("name", name);
+//
+//            return query.setColumnMappings(FilmDto.COLUMN_MAPPING)
+//                    .executeAndFetchFirst(FilmDto.class);
+//        }
+//    }
 
     @Override
     public Collection<Film> findAllFilms() {

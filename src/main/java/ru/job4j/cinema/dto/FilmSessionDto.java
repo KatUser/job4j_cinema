@@ -10,6 +10,7 @@ public class FilmSessionDto {
             = Map.of(
             "id", "id",
             "name", "name",
+            "film_id", "filmId",
             "description", "description",
             "start_time", "startTime",
             "end_time", "endTime",
@@ -20,6 +21,7 @@ public class FilmSessionDto {
 
     private int id;
     private String name;
+    private int filmId;
     private String description;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
@@ -28,26 +30,29 @@ public class FilmSessionDto {
     private int hallsId;
 
     public FilmSessionDto(int id,
-                          int hallsId,
+                          int filmId,
                           String name,
                           String description,
                           LocalDateTime startTime,
                           LocalDateTime endTime,
                           String hallName,
-                          int price) {
+                          int price,
+                          int hallsId) {
         this.id = id;
-        this.hallsId = hallsId;
+        this.filmId = filmId;
         this.name = name;
         this.description = description;
         this.startTime = startTime;
         this.endTime = endTime;
         this.hallName = hallName;
         this.price = price;
+        this.hallsId = hallsId;
     }
 
     public FilmSessionDto() {
 
     }
+
     public int getId() {
         return id;
     }
@@ -62,6 +67,14 @@ public class FilmSessionDto {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getFilmId(){
+        return filmId;
+    }
+
+    public void setFilmId(int filmId) {
+        this.filmId = filmId;
     }
 
     public String getDescription() {

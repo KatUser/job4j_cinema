@@ -47,12 +47,13 @@ public class Sql2oFilmSessionRepository implements FilmSessionRepository {
                     """
                             SELECT
                             fs.id,
-                            fs.halls_id as halls_id,
+                            f.id as film_id,
                             f.name,
                             fs.start_time,
                             fs.end_time,
                             h.name as hall_name,
-                            fs.price
+                            fs.price,
+                            fs.halls_id as halls_id
                             FROM film_sessions AS fs
                             INNER JOIN films AS f ON fs.film_id = f.id
                             INNER JOIN halls AS h ON fs.halls_id = h.id

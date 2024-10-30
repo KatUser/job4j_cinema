@@ -55,11 +55,11 @@ public class SimpleFilmService implements FilmService {
         return filmRepository.findById(id);
     }
 
-    @Override
-    public FilmDto findByName(String name) {
-
-        return filmRepository.findByName(name);
-    }
+//    @Override
+//    public FilmDto findByName(String name) {
+//
+//        return filmRepository.findByName(name);
+//    }
 
     @Override
     public Collection<Film> findAll() {
