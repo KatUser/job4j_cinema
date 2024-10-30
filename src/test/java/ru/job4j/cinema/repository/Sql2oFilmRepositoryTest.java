@@ -101,23 +101,6 @@ class Sql2oFilmRepositoryTest {
     }
 
     @Test
-    public void whenSaveFilmThenGetItByName() {
-        var film = sql2oFilmRepository.save(
-                new Film(0,
-                        "TestFilm",
-                        "description",
-                        2000,
-                        1,
-                        1,
-                        1,
-                        1)
-        );
-
-        var savedFilm = sql2oFilmRepository.findByName(film.getName());
-        assertThat(film.getName()).isEqualTo(savedFilm.getName());
-    }
-
-    @Test
     public void whenSaveFilmsThenGetAllOfThen() {
         sql2oFilmRepository.save(
                 new Film(0,

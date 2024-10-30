@@ -12,8 +12,6 @@ public interface FilmRepository {
     boolean deleteById(int id);
 
     FilmDto findById(int id);
-//
-//    FilmDto findByName(String name);
 
     Collection<Film> findAllFilms();
 }

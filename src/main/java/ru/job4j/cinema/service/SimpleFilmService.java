@@ -39,6 +39,19 @@ public class SimpleFilmService implements FilmService {
     }
 
     @Override
+    public FilmDto findById(int id) {
+
+        return filmRepository.findById(id);
+    }
+
+    @Override
+    public Collection<Film> findAll() {
+
+        return filmRepository.findAllFilms();
+    }
+
+
+    @Override
     public void deleteById(int id) {
 
         var file = findById(id);
@@ -49,21 +62,4 @@ public class SimpleFilmService implements FilmService {
 
     }
 
-    @Override
-    public FilmDto findById(int id) {
-
-        return filmRepository.findById(id);
-    }
-
-//    @Override
-//    public FilmDto findByName(String name) {
-//
-//        return filmRepository.findByName(name);
-//    }
-
-    @Override
-    public Collection<Film> findAll() {
-
-        return filmRepository.findAllFilms();
-    }
 }
