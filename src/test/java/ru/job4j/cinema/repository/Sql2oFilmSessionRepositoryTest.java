@@ -1,10 +1,7 @@
 package ru.job4j.cinema.repository;
 
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 
 import ru.job4j.cinema.configuration.DatasourceConfiguration;
@@ -50,6 +47,17 @@ class Sql2oFilmSessionRepositoryTest {
         filmSessions.forEach(filmSession ->
                 sql2oFilmSessionRepository.deleteById(filmSession.getId()));
     }
+
+    @BeforeEach
+    public void clearFilmSessionsBefore() {
+
+        var filmSessions = sql2oFilmSessionRepository.getAllFilmSessions();
+
+        filmSessions.forEach(filmSession ->
+                sql2oFilmSessionRepository.deleteById(filmSession.getId()));
+    }
+
+
 
     @DisplayName("Получаем сессию по id")
     @Test
@@ -100,7 +108,7 @@ class Sql2oFilmSessionRepositoryTest {
                 1,
                 1));
 
-        sql2oFilmSessionRepository.save(
+        var savedFilmSession1 =  sql2oFilmSessionRepository.save(
                 new FilmSession(
                         0,
                         savedFilm.getId(),
@@ -109,18 +117,26 @@ class Sql2oFilmSessionRepositoryTest {
                         LocalDateTime.now(),
                         1500)
         );
-        sql2oFilmSessionRepository.save(
-                new FilmSession(
-                        0,
-                        savedFilm.getId(),
-                        1,
-                        LocalDateTime.now(),
-                        LocalDateTime.now(),
-                        1500)
-        );
-        assertThat(sql2oFilmSessionRepository.getAllFilmSessions()).isNotEmpty();
-        assertThat(sql2oFilmSessionRepository.getAllFilmSessions()).hasSize(2);
-    }
 
+        var savedFilmSession2 = sql2oFilmSessionRepository.save(
+                new FilmSession(
+                        0,
+                        savedFilm.getId(),
+                        1,
+                        LocalDateTime.now(),
+                        LocalDateTime.now(),
+                        1500)
+        );
+
+        var allFilmSessions = sql2oFilmSessionRepository.getAllFilmSessions();
+
+        assertThat(allFilmSessions).hasSize(2);
+
+        assertThat(sql2oFilmSessionRepository
+                .getFilmSessionById(savedFilmSession1.getId())).isNotNull();
+
+        assertThat(sql2oFilmSessionRepository
+                .getFilmSessionById(savedFilmSession2.getId())).isNotNull();
+    }
 }
 
