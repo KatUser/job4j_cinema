@@ -69,7 +69,7 @@ public class FilmSessionDto {
         this.name = name;
     }
 
-    public int getFilmId(){
+    public int getFilmId() {
         return filmId;
     }
 

@@ -167,15 +167,15 @@ class Sql2oTicketRepositoryTest {
                         1
                 ));
 
-        sql2oTicketRepository.save
-                (new Ticket(0,
+        sql2oTicketRepository.save(
+                new Ticket(0,
                         filmSession.getId(),
                         1, 1,
                         user.get().getId()
                 ));
 
-        sql2oTicketRepository.save
-                (new Ticket(0,
+        sql2oTicketRepository.save(
+                new Ticket(0,
                         filmSession.getId(),
                         1,
                         2,
@@ -227,8 +227,8 @@ class Sql2oTicketRepositoryTest {
 
         var savedTicketOptional = savedTicket.get();
 
-        assertThat(sql2oTicketRepository.save
-                (new Ticket(
+        assertThat(sql2oTicketRepository.save(
+                new Ticket(
                         0,
                         savedTicketOptional.getId(),
                         savedTicketOptional.getRowNumber(),
