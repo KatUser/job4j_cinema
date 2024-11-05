@@ -1,12 +1,10 @@
 package ru.job4j.cinema.repository;
 
 import java.util.Properties;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
+
+import org.junit.jupiter.api.*;
 
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import ru.job4j.cinema.configuration.DatasourceConfiguration;
 import ru.job4j.cinema.model.Film;
 
@@ -36,14 +34,25 @@ class Sql2oFilmRepositoryTest {
 
     @AfterEach
     public void clearFilms() {
+
         var films = sql2oFilmRepository.findAllFilms();
+
+        films.forEach(film -> sql2oFilmRepository.deleteById(film.getId()));
+    }
+
+    @BeforeEach
+    public void clearFilmsBefore() {
+
+        var films = sql2oFilmRepository.findAllFilms();
+
         films.forEach(film -> sql2oFilmRepository.deleteById(film.getId()));
     }
 
     @DisplayName("Получаем сохраненный фильм")
     @Test
     public void whenSaveThenGetSavedFilm() {
-        var film = sql2oFilmRepository.save(
+
+        var savedFilm = sql2oFilmRepository.save(
                 new Film(0,
                         "TestFilm",
                         "description",
@@ -56,15 +65,18 @@ class Sql2oFilmRepositoryTest {
 
         var savedFilms = sql2oFilmRepository.findAllFilms();
 
-        assertThat(savedFilms).contains(film);
+        assertThat(savedFilms).contains(savedFilm);
     }
 
-    @DisplayName("")
+    @DisplayName("Получаем пустой список фильмов")
     @Test
     public void whenSaveNothingThenNothingIsFound() {
+
         assertThat(sql2oFilmRepository.findAllFilms()).isEmpty();
+
     }
 
+    @DisplayName("Проверяем удаление фильма")
     @Test
     public void whenDeleteAllThenGetEmptyOptional() {
         var film = sql2oFilmRepository.save(
@@ -77,12 +89,17 @@ class Sql2oFilmRepositoryTest {
                         1,
                         1)
         );
+
         var isDeleted = sql2oFilmRepository.deleteById(film.getId());
+
         var savedAndDeletedFilm = sql2oFilmRepository.findById(film.getId());
+
         assertThat(isDeleted).isTrue();
+
         assertThat(savedAndDeletedFilm).isNull();
     }
 
+    @DisplayName("Получаем фильм по его id")
     @Test
     public void whenSaveFilmThenGetItById() {
         var film = sql2oFilmRepository.save(
@@ -97,9 +114,11 @@ class Sql2oFilmRepositoryTest {
         );
 
         var savedFilm = sql2oFilmRepository.findById(film.getId());
+
         assertThat(film.getId()).isEqualTo(savedFilm.getId());
     }
 
+    @DisplayName("Получаем список фильмов после сохранения")
     @Test
     public void whenSaveFilmsThenGetAllOfThen() {
         sql2oFilmRepository.save(

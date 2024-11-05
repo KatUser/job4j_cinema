@@ -94,7 +94,8 @@ public class Sql2oFilmSessionRepository implements FilmSessionRepository {
                     start_time,
                     end_time,
                     price)
-                    values(:filmId,
+                    values
+                    (:filmId,
                     :hallsId,
                     :startTime,
                     :endTime,

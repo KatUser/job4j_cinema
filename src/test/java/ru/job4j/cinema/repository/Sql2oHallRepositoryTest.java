@@ -2,6 +2,7 @@ package ru.job4j.cinema.repository;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.job4j.cinema.configuration.DatasourceConfiguration;
 import ru.job4j.cinema.model.Hall;
@@ -33,13 +34,17 @@ class Sql2oHallRepositoryTest {
 
     @AfterEach
     public void clearHalls() {
+
         var halls = sql2oHallRepository.getAllHalls();
+
         halls.forEach(hall ->
                 sql2oHallRepository.deleteById(hall.getId()));
     }
 
+    @DisplayName("Сохранение холла в БД")
     @Test
     public void whenSaveHallThenGetItById() {
+
         var hall = sql2oHallRepository.saveHall(
                 new Hall(0,
                         "name",
@@ -49,6 +54,7 @@ class Sql2oHallRepositoryTest {
         );
 
         var allHalls = sql2oHallRepository.getAllHalls();
+
         assertThat(allHalls).contains(hall);
     }
 }

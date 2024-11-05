@@ -12,7 +12,7 @@ import java.util.Optional;
 @Repository
 public class Sql2oTicketRepository implements TicketRepository {
 
-private static final Logger LOG = LoggerFactory.getLogger(Sql2oTicketRepository.class.getName());
+    private static final Logger LOG = LoggerFactory.getLogger(Sql2oTicketRepository.class.getName());
 
     private final Sql2o sql2o;
 
@@ -45,7 +45,7 @@ private static final Logger LOG = LoggerFactory.getLogger(Sql2oTicketRepository.
             return Optional.of(ticket);
 
         } catch (Exception e) {
-                LOG.error("Ошибка сохранения билета");
+            LOG.error("Ошибка сохранения билета");
         }
         return Optional.empty();
     }
@@ -81,7 +81,7 @@ private static final Logger LOG = LoggerFactory.getLogger(Sql2oTicketRepository.
         }
     }
 
-    public Ticket getTicketById(int id) {
+    public Optional<Ticket> getTicketById(int id) {
         try (var connection = sql2o.open()) {
 
             var query = connection.createQuery("""
@@ -91,8 +91,9 @@ private static final Logger LOG = LoggerFactory.getLogger(Sql2oTicketRepository.
 
             query.addParameter("id", id);
 
-            return query.setColumnMappings(Ticket.COLUMN_MAPPING)
-                    .executeAndFetchFirst(Ticket.class);
+            return Optional.ofNullable(query
+                    .setColumnMappings(Ticket.COLUMN_MAPPING)
+                    .executeAndFetchFirst(Ticket.class));
         }
     }
 }
