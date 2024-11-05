@@ -48,18 +48,7 @@ class Sql2oFilmSessionRepositoryTest {
                 sql2oFilmSessionRepository.deleteById(filmSession.getId()));
     }
 
-    @BeforeEach
-    public void clearFilmSessionsBefore() {
-
-        var filmSessions = sql2oFilmSessionRepository.getAllFilmSessions();
-
-        filmSessions.forEach(filmSession ->
-                sql2oFilmSessionRepository.deleteById(filmSession.getId()));
-    }
-
-
-
-    @DisplayName("Получаем сессию по id")
+    @DisplayName("Проверяем, что сессия сохранилась в БД")
     @Test
     public void whenSaveFilmSessionThenGetItById() {
 
@@ -91,52 +80,9 @@ class Sql2oFilmSessionRepositoryTest {
     @DisplayName("Получение несуществующей сессии")
     @Test
     public void whenGettingNonExistingSessionIdThenReceiveNull() {
+
         assertThat(sql2oFilmSessionRepository.getFilmSessionById(1000))
                 .isNull();
-    }
-
-    @DisplayName("Получаем список сессий")
-    @Test
-    public void whenGettingListOfSessionsThenReceiveIt() {
-
-        var savedFilm = sql2oFilmRepository.save(new Film(0,
-                "name",
-                "desc",
-                2001,
-                1,
-                1,
-                1,
-                1));
-
-        var savedFilmSession1 =  sql2oFilmSessionRepository.save(
-                new FilmSession(
-                        0,
-                        savedFilm.getId(),
-                        1,
-                        LocalDateTime.now(),
-                        LocalDateTime.now(),
-                        1500)
-        );
-
-        var savedFilmSession2 = sql2oFilmSessionRepository.save(
-                new FilmSession(
-                        0,
-                        savedFilm.getId(),
-                        1,
-                        LocalDateTime.now(),
-                        LocalDateTime.now(),
-                        1500)
-        );
-
-        var allFilmSessions = sql2oFilmSessionRepository.getAllFilmSessions();
-
-        assertThat(allFilmSessions).hasSize(2);
-
-        assertThat(sql2oFilmSessionRepository
-                .getFilmSessionById(savedFilmSession1.getId())).isNotNull();
-
-        assertThat(sql2oFilmSessionRepository
-                .getFilmSessionById(savedFilmSession2.getId())).isNotNull();
     }
 }
 

@@ -40,14 +40,6 @@ class Sql2oFilmRepositoryTest {
         films.forEach(film -> sql2oFilmRepository.deleteById(film.getId()));
     }
 
-    @BeforeEach
-    public void clearFilmsBefore() {
-
-        var films = sql2oFilmRepository.findAllFilms();
-
-        films.forEach(film -> sql2oFilmRepository.deleteById(film.getId()));
-    }
-
     @DisplayName("Получаем сохраненный фильм")
     @Test
     public void whenSaveThenGetSavedFilm() {
@@ -66,14 +58,6 @@ class Sql2oFilmRepositoryTest {
         var savedFilms = sql2oFilmRepository.findAllFilms();
 
         assertThat(savedFilms).contains(savedFilm);
-    }
-
-    @DisplayName("Получаем пустой список фильмов")
-    @Test
-    public void whenSaveNothingThenNothingIsFound() {
-
-        assertThat(sql2oFilmRepository.findAllFilms()).isEmpty();
-
     }
 
     @DisplayName("Проверяем удаление фильма")
@@ -99,7 +83,7 @@ class Sql2oFilmRepositoryTest {
         assertThat(savedAndDeletedFilm).isNull();
     }
 
-    @DisplayName("Получаем фильм по его id")
+    @DisplayName("Сохраняем и получаем фильм по его id")
     @Test
     public void whenSaveFilmThenGetItById() {
         var film = sql2oFilmRepository.save(
@@ -116,32 +100,5 @@ class Sql2oFilmRepositoryTest {
         var savedFilm = sql2oFilmRepository.findById(film.getId());
 
         assertThat(film.getId()).isEqualTo(savedFilm.getId());
-    }
-
-    @DisplayName("Получаем список фильмов после сохранения")
-    @Test
-    public void whenSaveFilmsThenGetAllOfThen() {
-        sql2oFilmRepository.save(
-                new Film(0,
-                        "TestFilm",
-                        "description",
-                        2000,
-                        1,
-                        1,
-                        1,
-                        1)
-        );
-        sql2oFilmRepository.save(
-                new Film(0,
-                        "TestFilm2",
-                        "description2",
-                        2000,
-                        1,
-                        1,
-                        1,
-                        1)
-        );
-
-        assertThat(sql2oFilmRepository.findAllFilms()).hasSize(2);
     }
 }

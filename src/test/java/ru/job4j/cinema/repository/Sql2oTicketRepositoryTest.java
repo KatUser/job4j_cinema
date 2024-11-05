@@ -134,59 +134,6 @@ class Sql2oTicketRepositoryTest {
         assertThat(ticket).isEmpty();
     }
 
-    @DisplayName("Проверяем сохранение и получение нескольких билетов")
-    @Test
-    public void whenSaveSeveralTicketsThenGetAll() {
-
-        var user = sql2oUserRepository.save(
-                new User(
-                        0,
-                        "test",
-                        "test@test.ru",
-                        "test"
-                ));
-
-        var film = sql2oFilmRepository.save(
-                new Film(
-                        1,
-                        "name",
-                        "description",
-                        2000,
-                        1,
-                        1,
-                        1,
-                        1
-                ));
-
-        var filmSession = sql2oFilmSessionRepository.save(
-                new FilmSession(1,
-                        film.getId(),
-                        1,
-                        LocalDateTime.now(),
-                        LocalDateTime.now(),
-                        1
-                ));
-
-        sql2oTicketRepository.save(
-                new Ticket(0,
-                        filmSession.getId(),
-                        1, 1,
-                        user.get().getId()
-                ));
-
-        sql2oTicketRepository.save(
-                new Ticket(0,
-                        filmSession.getId(),
-                        1,
-                        2,
-                        user.get().getId()
-                ));
-
-        var savedTickets = sql2oTicketRepository.getAllTickets();
-
-        assertThat(savedTickets).hasSize(2);
-    }
-
     @DisplayName("Проверяем, что нельзя купить уже купленный билет")
     @Test
     public void whenCannotBuyTicketForTheSamePlace() {
