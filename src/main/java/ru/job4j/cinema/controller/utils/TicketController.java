@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.job4j.cinema.model.Ticket;
-import ru.job4j.cinema.service.TicketService;
+import ru.job4j.cinema.service.interfaces.TicketService;
 
 @Controller
 @RequestMapping("/tickets")
@@ -26,11 +26,10 @@ public class TicketController {
         var savedTicket = ticketService.save(ticket);
 
         if (savedTicket.isEmpty()) {
-            model.addAttribute("message", "Не купиль");
+            model.addAttribute("message",
+                    model.getAttribute("message"));
             return "errors/404";
         }
-
-        ticket.setId(savedTicket.get().getId());
 
         return "tickets/one";
     }

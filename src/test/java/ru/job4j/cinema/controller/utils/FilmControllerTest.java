@@ -9,7 +9,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.ConcurrentModel;
 import ru.job4j.cinema.dto.FilmDto;
 import ru.job4j.cinema.model.Film;
-import ru.job4j.cinema.service.FilmService;
+import ru.job4j.cinema.service.interfaces.FilmService;
 
 import java.util.List;
 

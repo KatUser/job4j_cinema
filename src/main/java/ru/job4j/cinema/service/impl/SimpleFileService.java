@@ -1,10 +1,11 @@
-package ru.job4j.cinema.service;
+package ru.job4j.cinema.service.impl;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import ru.job4j.cinema.dto.FileDto;
-import ru.job4j.cinema.repository.FileRepository;
+import ru.job4j.cinema.repository.interfaces.FileRepository;
 import ru.job4j.cinema.model.File;
+import ru.job4j.cinema.service.interfaces.FileService;
 
 import java.io.IOException;
 import java.nio.file.Files;

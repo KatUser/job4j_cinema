@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.job4j.cinema.configuration.DatasourceConfiguration;
 import ru.job4j.cinema.model.Hall;
+import ru.job4j.cinema.repository.impl.Sql2oHallRepository;
 
 import java.util.Properties;
 

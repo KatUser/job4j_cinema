@@ -1,10 +1,11 @@
-package ru.job4j.cinema.repository;
+package ru.job4j.cinema.repository.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Sql2o;
 import ru.job4j.cinema.model.Ticket;
+import ru.job4j.cinema.repository.interfaces.TicketRepository;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -45,7 +46,8 @@ public class Sql2oTicketRepository implements TicketRepository {
             return Optional.of(ticket);
 
         } catch (Exception e) {
-            LOG.error("Ошибка сохранения билета");
+
+            LOG.error("Ошибка сохранения билета", e);
         }
         return Optional.empty();
     }

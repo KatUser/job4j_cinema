@@ -7,6 +7,8 @@ import org.junit.jupiter.api.*;
 import ru.job4j.cinema.configuration.DatasourceConfiguration;
 import ru.job4j.cinema.model.Film;
 import ru.job4j.cinema.model.FilmSession;
+import ru.job4j.cinema.repository.impl.Sql2oFilmRepository;
+import ru.job4j.cinema.repository.impl.Sql2oFilmSessionRepository;
 
 import java.time.LocalDateTime;
 import java.util.Properties;

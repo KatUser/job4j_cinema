@@ -10,9 +10,9 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.ui.ConcurrentModel;
 import ru.job4j.cinema.dto.FilmSessionDto;
 import ru.job4j.cinema.model.Hall;
-import ru.job4j.cinema.service.FilmService;
-import ru.job4j.cinema.service.FilmSessionService;
-import ru.job4j.cinema.service.HallService;
+import ru.job4j.cinema.service.interfaces.FilmService;
+import ru.job4j.cinema.service.interfaces.FilmSessionService;
+import ru.job4j.cinema.service.interfaces.HallService;
 
 import java.time.LocalDateTime;
 import java.util.List;

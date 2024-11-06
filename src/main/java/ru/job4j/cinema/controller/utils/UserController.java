@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.job4j.cinema.model.User;
-import ru.job4j.cinema.service.UserService;
+import ru.job4j.cinema.service.interfaces.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -36,7 +36,8 @@ public class UserController {
 
             model.addAttribute("message",
                     "Пользователь с таким email уже существует");
-            return "errors/404";
+
+            return "redirect:/users/register";
         }
         return "redirect:/filmsessions";
     }

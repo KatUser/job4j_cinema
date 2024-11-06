@@ -6,6 +6,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.job4j.cinema.configuration.DatasourceConfiguration;
 import ru.job4j.cinema.model.*;
+import ru.job4j.cinema.repository.impl.Sql2oFilmRepository;
+import ru.job4j.cinema.repository.impl.Sql2oFilmSessionRepository;
+import ru.job4j.cinema.repository.impl.Sql2oTicketRepository;
+import ru.job4j.cinema.repository.impl.Sql2oUserRepository;
 
 import java.time.LocalDateTime;
 import java.util.Properties;

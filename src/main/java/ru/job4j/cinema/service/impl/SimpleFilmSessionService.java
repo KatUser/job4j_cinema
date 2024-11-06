@@ -1,8 +1,9 @@
-package ru.job4j.cinema.service;
+package ru.job4j.cinema.service.impl;
 
 import org.springframework.stereotype.Service;
 import ru.job4j.cinema.dto.FilmSessionDto;
-import ru.job4j.cinema.repository.FilmSessionRepository;
+import ru.job4j.cinema.repository.interfaces.FilmSessionRepository;
+import ru.job4j.cinema.service.interfaces.FilmSessionService;
 
 import java.util.Collection;
 

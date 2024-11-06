@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.job4j.cinema.model.Ticket;
 import ru.job4j.cinema.model.User;
-import ru.job4j.cinema.service.FilmService;
-import ru.job4j.cinema.service.FilmSessionService;
-import ru.job4j.cinema.service.HallService;
+import ru.job4j.cinema.service.interfaces.FilmService;
+import ru.job4j.cinema.service.interfaces.FilmSessionService;
+import ru.job4j.cinema.service.interfaces.HallService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;

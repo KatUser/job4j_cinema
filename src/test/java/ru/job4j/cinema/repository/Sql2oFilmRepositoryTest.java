@@ -7,6 +7,7 @@ import org.junit.jupiter.api.*;
 
 import ru.job4j.cinema.configuration.DatasourceConfiguration;
 import ru.job4j.cinema.model.Film;
+import ru.job4j.cinema.repository.impl.Sql2oFilmRepository;
 
 import static org.assertj.core.api.Assertions.*;
 
