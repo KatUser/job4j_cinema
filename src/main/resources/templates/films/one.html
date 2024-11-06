@@ -43,9 +43,11 @@
                     </tr>
 
             <div th:switch="${filmdto.id}">
-                <p th:case="1" ><img src = "files/lordoftherings.jpg" alt = "LordOfTheRings"></p>
-                <p th:case="2"><img src = "files/homealone.jpg" alt = "HomeAlone"></p>
-                <p th:case="3"><img src = "files/terminator.jpg" alt = "Terminator"></p>
+<!--                <img th:src="@{images/theatre.png}" alt="theatre">-->
+
+                <p th:case="1" ><img th:src="@{images/lordoftherings.png}" alt ="LordOfTheRings"></p>
+                <p th:case="2"><img th:src="@{images/homealone.jpg}" alt ="HomeAlone"></p>
+                <p th:case="3"><img th:src="@{images/terminator.jpg}" alt ="Terminator"></p>
             </div>
             </tbody>
             </table>
