@@ -1,5 +1,5 @@
 insert into files ("name", path)
 values
-('file1', 'files/lordoftherings.png'),
-('file2', 'files/homealone.jpg'),
-('file3', 'files/terminator.jpg');
+('file1', 'static/images/lordoftherings.jpg'),
+('file2', 'static/images/homealone.jpg'),
+('file3', 'static/images/terminator.jpg');
