@@ -20,7 +20,7 @@
             crossorigin="anonymous"></script>
     <title>Фильмотека</title>
 </head>
-<body>
+<body th:style="'background-image:url(' + @{/images/cinema_cut.jpg} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
 
 <div class="container-fluid p-0">
     <header th:insert="blocks/header :: header"></header>
@@ -33,9 +33,6 @@
             <h2>Здесь Вы можете посмотреть, что идёт в кино,
                 и купить билет на киносеанс. </h2>
 
-            <body th:style="'background-image:url(' + @{/images/cinema.jpg} + ');
-                background-repeat: no-repeat, repeat; background-size: 80%;'">
-            </body>
         </div>
 
 

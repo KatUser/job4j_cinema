@@ -14,7 +14,7 @@
             integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
             crossorigin="anonymous"></script>
 
-    <title>Киношечка</title>
+    <title>Инфо о фильме</title>
 </head>
 <body>
 <div class="container-fluid p-0">
@@ -43,8 +43,6 @@
                     </tr>
 
             <div th:switch="${filmdto.id}">
-<!--                <img th:src="@{images/theatre.png}" alt="theatre">-->
-
                 <p th:case="1" ><img th:src="@{/images/lordoftherings.jpg}" alt ="LordOfTheRings" width="180"></p>
                 <p th:case="2"><img th:src="@{/images/homealone.jpg}" alt ="HomeAlone" width="180"></p>
                 <p th:case="3"><img th:src="@{/images/terminator.jpg}" alt ="Terminator" width="180"></p>
