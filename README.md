@@ -3,17 +3,17 @@
 **Приложение состоит из следующих основных модулей**:
 
 _Главная страница_:
-![img.png](img.png)
+![img.png](screenshots/img.png)
 
 _Регистрация/Вход_:
-![img_1.png](img_1.png)
+![img_1.png](screenshots/img_1.png)
 
 _Вывод киносеансов и фильмов_:
-![img_2.png](img_2.png)
-![img_3.png](img_3.png)
+![img_2.png](screenshots/img_2.png)
+![img_3.png](screenshots/img_3.png)
 
 _Покупка билетов_:
-![img_4.png](img_4.png)
+![img_4.png](screenshots/img_4.png)
 
 
 
