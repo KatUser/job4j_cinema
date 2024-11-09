@@ -62,7 +62,7 @@ class UserControllerTest {
         var model = new ConcurrentModel();
         var view = userController.register(user, model);
 
-        assertThat(view).isEqualTo("errors/404");
+        assertThat(view).isEqualTo("redirect:/users/register");
         assertThat(model.getAttribute("message"))
                 .isEqualTo("Пользователь с таким email уже существует");
     }

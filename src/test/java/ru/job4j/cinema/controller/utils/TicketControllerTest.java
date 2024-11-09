@@ -55,7 +55,7 @@ class TicketControllerTest {
 
         assertThat(view).isEqualTo("errors/404");
         assertThat(model.getAttribute("message"))
-                .isEqualTo("Не купиль");
+                .isEqualTo("Попробуйте заново");
     }
 
     @DisplayName("Когда не смог купить билет без авторизации")

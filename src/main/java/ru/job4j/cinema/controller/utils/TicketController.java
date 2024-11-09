@@ -26,8 +26,7 @@ public class TicketController {
         var savedTicket = ticketService.save(ticket);
 
         if (savedTicket.isEmpty()) {
-            model.addAttribute("message",
-                    model.getAttribute("message"));
+            model.addAttribute("message", "Попробуйте заново");
             return "errors/404";
         }
 

@@ -1,8 +1,6 @@
 package ru.job4j.cinema.repository;
 
-
 import org.junit.jupiter.api.*;
-
 
 import ru.job4j.cinema.configuration.DatasourceConfiguration;
 import ru.job4j.cinema.model.Film;
